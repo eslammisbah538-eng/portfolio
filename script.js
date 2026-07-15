@@ -205,6 +205,38 @@ function buildProjectCard(project) {
     return card;
 }
 
+// Remembers where the user was scrolled to before the modal locked the page,
+// so we can restore it exactly when the modal closes.
+let scrollPositionBeforeModal = 0;
+
+function lockPageScroll() {
+    scrollPositionBeforeModal = window.scrollY || document.documentElement.scrollTop;
+
+    // overflow:hidden on body alone isn't enough on many browsers/mobile devices
+    // because the actual scrolling element is often <html>, not <body>. Also,
+    // iOS Safari ignores overflow:hidden for touch-scrolling entirely.
+    // Fixing the body in place is the reliable, cross-browser way to fully
+    // stop background scroll (desktop + mobile) while a modal is open.
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPositionBeforeModal}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+}
+
+function unlockPageScroll() {
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+
+    // Restore the exact scroll position instantly (no smooth animation)
+    window.scrollTo({ top: scrollPositionBeforeModal, behavior: 'instant' });
+}
+
 function openProjectModal(project) {
     document.getElementById('modalTitle').textContent = project.title;
     document.getElementById('modalDesc').textContent = project.fullDesc || project.shortDesc;
@@ -222,12 +254,12 @@ function openProjectModal(project) {
     if (repoLinkEl) repoLinkEl.href = project.repoLink || '#';
 
     modal.classList.add('open');
-    document.body.classList.add('modal-open');
+    lockPageScroll();
 }
 
 function closeProjectModal() {
     modal.classList.remove('open');
-    document.body.classList.remove('modal-open');
+    unlockPageScroll();
 }
 
 if (projectsGrid) {
@@ -266,6 +298,54 @@ let whyDeleting = false;
 let whyStarted = false;
 
 const whyEl = document.getElementById('whyTyped');
+const whyTypingWrapper = document.querySelector('.why-typing-wrapper');
+const whyTextSide = document.querySelector('.why-text-side');
+
+// The typing effect cycles through texts of different lengths forever.
+// Without a fixed height, the box grows/shrinks as lines wrap, which pushes
+// everything below it (including the Projects section) up and down —
+// this is what causes the page to "shake". We measure the tallest possible
+// rendered text once and lock the box to that height so it never changes.
+function lockWhyBoxHeight() {
+    if (!whyTypingWrapper || !whyTextSide) return;
+
+    const clone = whyTypingWrapper.cloneNode(false);
+    clone.style.position = 'absolute';
+    clone.style.visibility = 'hidden';
+    clone.style.pointerEvents = 'none';
+    clone.style.width = whyTypingWrapper.offsetWidth + 'px';
+    clone.style.height = 'auto';
+    document.body.appendChild(clone);
+
+    let maxHeight = 0;
+    whyTexts.forEach(text => {
+        clone.textContent = text;
+        maxHeight = Math.max(maxHeight, clone.scrollHeight);
+    });
+
+    document.body.removeChild(clone);
+
+    // Account for the card's own top+bottom padding (3rem + 3rem = 96px)
+    const neededHeight = maxHeight + 96;
+    whyTextSide.style.minHeight = Math.max(320, neededHeight) + 'px';
+}
+
+// Wrapping depends on the current width, so recompute after fonts load
+// (font metrics affect wrapping) and whenever the viewport is resized.
+// Run once immediately so the box has a sensible height from first paint,
+// then refine after fonts finish loading (font metrics affect wrapping).
+lockWhyBoxHeight();
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(lockWhyBoxHeight);
+}
+
+let whyResizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(whyResizeTimeout);
+    whyResizeTimeout = setTimeout(lockWhyBoxHeight, 200);
+});
+
+let whyTimeoutId = null;
 
 function whyType() {
     const current = whyTexts[whyTextIndex];
@@ -277,7 +357,7 @@ function whyType() {
 
         if (whyCharIndex === current.length) {
             whyDeleting = true;
-            setTimeout(whyType, 2200);
+            whyTimeoutId = setTimeout(whyType, 2200);
             return;
         }
     } else {
@@ -291,7 +371,7 @@ function whyType() {
         }
     }
 
-    setTimeout(whyType, whyDeleting ? 22 : 40);
+    whyTimeoutId = setTimeout(whyType, whyDeleting ? 22 : 40);
 }
 
 const whySection = document.getElementById('why-me');
@@ -299,9 +379,19 @@ const whySection = document.getElementById('why-me');
 if (whySection) {
     const whyObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !whyStarted) {
-                whyStarted = true;
-                setTimeout(whyType, 400);
+            if (entry.isIntersecting) {
+                if (!whyStarted) {
+                    // First time it becomes visible: start typing.
+                    whyStarted = true;
+                    whyTimeoutId = setTimeout(whyType, 400);
+                } else if (whyTimeoutId === null) {
+                    // Was paused while scrolled away: resume from where it stopped.
+                    whyTimeoutId = setTimeout(whyType, 400);
+                }
+            } else if (whyTimeoutId !== null) {
+                // Not on screen: stop scheduling further ticks entirely.
+                clearTimeout(whyTimeoutId);
+                whyTimeoutId = null;
             }
         });
     }, { threshold: 0.3 });
