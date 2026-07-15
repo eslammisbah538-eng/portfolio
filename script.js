@@ -58,14 +58,22 @@ const header = document.getElementById('header');
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
 
-window.addEventListener('scroll', () => {
+let scrollTicking = false;
+
+function handleScroll() {
+    const scrollY = window.scrollY;
+
     // Toggle scrolled class
-    header.classList.toggle('scrolled', window.scrollY > 50);
+    header.classList.toggle('scrolled', scrollY > 50);
+
+    // Show/hide scroll-to-top button
+    const scrollTopBtnEl = document.getElementById('scrollTop');
+    if (scrollTopBtnEl) scrollTopBtnEl.classList.toggle('visible', scrollY > 500);
 
     // Highlight active nav link
     let current = '';
     sections.forEach(section => {
-        if (window.scrollY >= (section.offsetTop - 200)) {
+        if (scrollY >= (section.offsetTop - 200)) {
             current = section.getAttribute('id');
         }
     });
@@ -76,7 +84,16 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-});
+
+    scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        requestAnimationFrame(handleScroll);
+        scrollTicking = true;
+    }
+}, { passive: true });
 
 
 // ==================== MOBILE MENU TOGGLE ====================
@@ -154,34 +171,83 @@ document.querySelectorAll('.skill-card').forEach(card => {
 });
 
 
-// ==================== PROJECT MODAL ====================
+// ==================== PROJECTS (LOADED FROM projects.json) ====================
 const modal = document.getElementById('projectModal');
 const closeModal = document.getElementById('closeModal');
+const projectsGrid = document.getElementById('projectsGrid');
 
-document.querySelectorAll('.open-project-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const card = e.target.closest('.project-card');
+function buildProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'project-card fade-in';
+    card.dataset.id = project.id;
 
-        // Populate modal content
-        document.getElementById('modalTitle').textContent = card.getAttribute('data-title');
-        document.getElementById('modalDesc').textContent = card.getAttribute('data-desc');
-        document.getElementById('modalImg').src = card.getAttribute('data-img');
+    const previewTags = project.tags.slice(0, 3)
+        .map(tag => `<span class="tag">${tag}</span>`)
+        .join('');
 
-        // Populate modal tags
-        const tagsContainer = document.getElementById('modalTags');
-        tagsContainer.innerHTML = '';
-        card.getAttribute('data-tags').split(',').forEach(tag => {
-            tagsContainer.innerHTML += `<span class="tag">${tag.trim()}</span>`;
-        });
+    card.innerHTML = `
+        <div class="project-image">
+            <img src="${project.image}" alt="${project.title}">
+        </div>
+        <div class="project-info">
+            <div class="project-tags">${previewTags}</div>
+            <h3>${project.title}</h3>
+            <p>${project.shortDesc}</p>
+            <div class="project-links">
+                <button class="open-project-btn" aria-label="عرض المشروع"><i class="fas fa-eye"></i></button>
+                <a href="${project.repoLink || '#'}" target="_blank" aria-label="كود المشروع"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    `;
 
-        modal.classList.add('open');
+    card.querySelector('.open-project-btn').addEventListener('click', () => openProjectModal(project));
+
+    return card;
+}
+
+function openProjectModal(project) {
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalDesc').textContent = project.fullDesc || project.shortDesc;
+    document.getElementById('modalImg').src = project.image;
+
+    const tagsContainer = document.getElementById('modalTags');
+    tagsContainer.innerHTML = '';
+    project.tags.forEach(tag => {
+        tagsContainer.innerHTML += `<span class="tag">${tag}</span>`;
     });
-});
 
-closeModal.addEventListener('click', () => modal.classList.remove('open'));
+    const liveLinkEl = document.getElementById('modalLiveLink');
+    const repoLinkEl = document.getElementById('modalRepoLink');
+    if (liveLinkEl) liveLinkEl.href = project.liveLink || '#';
+    if (repoLinkEl) repoLinkEl.href = project.repoLink || '#';
+
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+}
+
+function closeProjectModal() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+}
+
+if (projectsGrid) {
+    fetch('projects.json')
+        .then(res => res.json())
+        .then(projects => {
+            projects.forEach(project => {
+                const card = buildProjectCard(project);
+                projectsGrid.appendChild(card);
+                // Trigger fade-in observation for the newly added card
+                observer.observe(card);
+            });
+        })
+        .catch(err => console.error('تعذر تحميل projects.json:', err));
+}
+
+closeModal.addEventListener('click', closeProjectModal);
 
 window.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('open');
+    if (e.target === modal) closeProjectModal();
 });
 
 
@@ -244,14 +310,33 @@ if (whySection) {
 }
 
 
-// ==================== CONTACT FORM ====================
+// ==================== CONTACT FORM -> WHATSAPP ====================
 const contactForm = document.getElementById('contactForm');
+const WHATSAPP_NUMBER = '201103023916';
 
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        const name = document.getElementById('formName').value.trim();
+        const email = document.getElementById('formEmail').value.trim();
+        const subject = document.getElementById('formSubject').value.trim();
+        const message = document.getElementById('formMessage').value.trim();
+
+        const whatsappMessage =
+            `*رسالة جديدة من الموقع*\n` +
+            `----------------------\n` +
+            `*الاسم:* ${name}\n` +
+            `*الإيميل:* ${email}\n` +
+            `*الموضوع:* ${subject}\n` +
+            `*الرسالة:*\n${message}`;
+
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+
         const successMsg = document.getElementById('formSuccess');
+        successMsg.textContent = 'تم فتح واتساب برسالتك — أكمل الإرسال من هناك.';
         successMsg.classList.add('show');
         contactForm.reset();
 
@@ -262,10 +347,6 @@ if (contactForm) {
 
 // ==================== SCROLL TO TOP ====================
 const scrollTopBtn = document.getElementById('scrollTop');
-
-window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
-});
 
 scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
