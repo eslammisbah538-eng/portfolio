@@ -1,42 +1,28 @@
 [
   {
     "id": 1,
-    "title": "متجر إلكتروني متكامل",
-    "shortDesc": "منصة تجارة إلكترونية متجاوبة بالكامل مع نظام سلة مشتريات ديناميكي وبوابة دفع افتراضية.",
-    "fullDesc": "منصة تجارة إلكترونية متجاوبة بالكامل مع نظام سلة مشتريات ديناميكي وبوابة دفع افتراضية شيك لتسهيل البيع والشراء.",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop",
-    "tags": ["React", "Styled Components", "Redux"],
-    "liveLink": "#",
-    "repoLink": "#"
+    "titleAr": "موقع Mocana Café",
+    "titleEn": "Mocana Café Website",
+    "shortDescAr": "صفحة هبوط عصرية ومتجاوبة لمقهى فاخر، تعرض القائمة وقصة المكان وآراء العملاء وتتيح حجز طاولة.",
+    "shortDescEn": "A modern responsive landing page for a premium cafe, featuring the menu, story, guest reviews, and table reservations.",
+    "fullDescAr": "صممت وطورت تجربة رقمية كاملة لمقهى Mocana Café باستخدام HTML وCSS وJavaScript. يتضمن الموقع واجهة داكنة أنيقة، أقسامًا للقائمة وقصة المكان وآراء العملاء، نموذجًا لحجز الطاولات، وتفاعلات متجاوبة تعمل على مختلف الشاشات.",
+    "fullDescEn": "Designed and developed a complete digital experience for Mocana Café using HTML, CSS, and JavaScript. The site includes an elegant dark interface, menu, story and guest review sections, a table reservation form, and responsive interactions across screen sizes.",
+    "image": "photo/mocana-cafe.jpg.png",
+    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+    "liveLink": "https://mocana-cafe.vercel.app/",
+    "repoLink": "https://github.com/eslammisbah538-eng/Mocana-Caf-"
   },
   {
     "id": 2,
-    "title": "لوحة تحكم إدارية",
-    "shortDesc": "تصميم واجهة متطورة ومريحة لعرض البيانات والرسوم البيانية وتحليل أداء المستخدمين.",
-    "fullDesc": "تصميم واجهة متطورة ومريحة لعرض البيانات والرسوم البيانية وتحليل أداء المستخدمين بسلاسة تامة ومتابعة التقارير اليومية.",
-    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&h=350&fit=crop",
-    "tags": ["HTML5", "CSS3", "JavaScript"],
-    "liveLink": "#",
-    "repoLink": "#"
-  },
-  {
-    "id": 3,
-    "title": "تطبيق محادثة فوري",
-    "shortDesc": "تطبيق محادثة متكامل يسمح للمستخدمين بإنشاء غرف شات وتبادل الرسائل في نفس اللحظة.",
-    "fullDesc": "تطبيق محادثة متكامل يسمح للمستخدمين بإنشاء غرف شات وتبادل الرسائل النصية والملفات في نفس اللحظة بكفاءة عالية وأمان تام.",
-    "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&h=350&fit=crop",
-    "tags": ["React", "Node.js", "Socket.io"],
-    "liveLink": "#",
-    "repoLink": "#"
-  },
-  {
-    "id": 4,
-    "title": "موقع محفظة أعمال شخصية",
-    "shortDesc": "موقع ويب متكامل لعرض الأعمال والمهارات الشخصية مبني بتصميم النيومورفيزم الحديث.",
-    "fullDesc": "موقع ويب متكامل لعرض الأعمال والمهارات الشخصية مبني بتصميم النيومورفيزم الجذاب مع دعم كامل للوضع الداكن والأنيميشن.",
-    "image": "https://images.unsplash.com/photo-1545665277-5937489579f2?w=500&h=350&fit=crop",
-    "tags": ["HTML5", "CSS3", "JS Vanilla"],
-    "liveLink": "#",
-    "repoLink": "#"
+    "titleAr": "موقع صيدلية الشعب",
+    "titleEn": "Al Shaab Pharmacy",
+    "shortDescAr": "واجهة صيدلية متجاوبة لعرض المنتجات والخدمات، مع فلترة المنتجات وسلة مشتريات وطلب مباشر عبر واتساب.",
+    "shortDescEn": "A responsive pharmacy experience with product browsing, filtering, a shopping cart, and direct WhatsApp ordering.",
+    "fullDescAr": "صممت وطورت Landing Page متكاملة لصيدلية الشعب باستخدام HTML5 وCSS3 وVanilla JavaScript. يحتوي الموقع على وضع ليلي ونهاري، فلترة للمنتجات، سلة مشتريات تفاعلية، وتجهيز الطلبات وإرسالها مباشرة عبر WhatsApp، مع تصميم متجاوب لمختلف الشاشات.",
+    "fullDescEn": "Designed and developed a complete landing page for Al Shaab Pharmacy using HTML5, CSS3, and Vanilla JavaScript. The experience includes dark and light themes, product filtering, an interactive shopping cart, direct WhatsApp order preparation, and responsive layouts across screen sizes.",
+    "image": "photo/pharmacy.png",
+    "tags": ["HTML5", "CSS3", "Vanilla JavaScript", "Responsive Design"],
+    "liveLink": "https://pharmacy-islam.vercel.app/",
+    "repoLink": "https://github.com/eslammisbah538-eng/pharmacy"
   }
 ]

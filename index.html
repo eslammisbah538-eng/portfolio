@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Islam Misbah | Front-End Developer</title>
-    <meta name="description" content="Islam Misbah - Front-End Developer specializing in React.js & modern JavaScript. Building fast, responsive, pixel-perfect web experiences.">
-    <meta name="keywords" content="Islam Misbah, إسلام مصباح, Front-End Developer, React Developer, مطور واجهات أمامية, Web Developer Egypt, islammisbah, برمجه, برمجه الويب, اسلام مصباح ويب, islammisbah.dev, Islam Misbah Dev, المبرمج اسلام مصباح, المبرمج اسلام مصباح ابو الحمد, programing, portfolio, Islam Misbah Abo Alhamad">
+    <meta name="description"
+        content="Islam Misbah - Front-End Developer specializing in React.js & modern JavaScript. Building fast, responsive, pixel-perfect web experiences.">
+    <meta name="keywords"
+        content="Islam Misbah, إسلام مصباح, Front-End Developer, React Developer, مطور واجهات أمامية, Web Developer Egypt, islammisbah, برمجه, برمجه الويب, اسلام مصباح ويب, islammisbah.dev, Islam Misbah Dev, المبرمج اسلام مصباح, المبرمج اسلام مصباح ابو الحمد, programing, portfolio, Islam Misbah Abo Alhamad">
     <meta name="author" content="Islam Misbah">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio-islam-misbah.vercel.app/">
@@ -31,6 +33,7 @@
     <meta name="google-site-verification" content="tePVc-zW_VjmHiouaEdHWK_paa_o_JbcBqF_XLyXWgU" />
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +57,7 @@
     }
     </script>
 </head>
+
 <body>
 
     <!-- ==================== PRELOADER ==================== -->
@@ -63,19 +67,25 @@
 
     <!-- ==================== HEADER ==================== -->
     <header id="header">
-        <a href="#" class="logo">Islam Misbah</a>
+        <a href="#" class="logo" aria-label="Islam Misbah home">
+            <span class="logo-wordmark">Islam Misbah</span>
+        </a>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
 
 
-            <li><a href="#projects" class="nav-link">Portfolio</a></li>
-            <li><a href="#why-me" class="nav-link">Why Me</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Portfolio</a></li>
+            <li><a href="#why-me" class="nav-link" data-i18n="nav.why">Why Me</a></li>
+            <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+            <li><a href="#home" class="nav-link active" data-i18n="nav.home">Home</a></li>
             <li>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                <button class="language-toggle" id="languageToggle" type="button"
+                    aria-label="Switch language">عربي</button>
+            </li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Theme">
                     <i class="fas fa-moon"></i>
                 </button>
             </li>
@@ -95,7 +105,7 @@
 
             <h1>
                 <span class="highlight">Islam Misbah</span> <br>
-                <span class="hero-subtitle">Front End Developer</span>
+                <span class="hero-subtitle" data-i18n="hero.role">Front-End Developer</span>
             </h1>
 
             <div class="hero-description-container" id="heroDescContainer">
@@ -107,15 +117,15 @@
                 <a href="#projects" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        style="display:inline-block;vertical-align:middle;margin-left:8px;">
+                        style="display:inline-block;vertical-align:middle;margin-inline-end:8px;">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
-                   View My Work
+                    <span data-i18n="hero.work">View My Work</span>
                 </a>
                 <a href="cv.pdf" download class="btn btn-cv-download">
                     <i class="fas fa-download"></i>
-                    Download CV
+                    <span data-i18n="hero.cv">Download CV</span>
                 </a>
             </div>
         </div>
@@ -124,15 +134,6 @@
             <div class="hero-image-wrapper">
                 <img src="photo/imagemain.jpg" alt="Islam Misbah — Front-End Developer">
 
-                <div class="floating-stat">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">مشروع منجز</div>
-                </div>
-
-                <div class="floating-stat">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">سنوات خبرة</div>
-                </div>
             </div>
         </div>
 
@@ -143,33 +144,33 @@
     <section id="about">
 
         <div class="section-header fade-in">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-description">Responsive code for beautiful designs</p>
+            <h2 class="section-title" data-i18n="about.title">About Me</h2>
+            <p class="section-description" data-i18n="about.lead">Responsive code for beautiful designs</p>
         </div>
 
         <div class="about-container">
 
             <div class="about-image fade-in">
                 <div class="about-image-neu">
-                    <img src="photo/about.png"
-                        alt="Front-End Development">
+                    <img src="photo/about.png" alt="Front-End Development">
                 </div>
             </div>
 
             <div class="about-content fade-in">
-                <h3>Front-End Developer</h3>
+                <h3 data-i18n="about.role">Front-End Developer</h3>
 
                 <p>
-                    Front-End Developer with over 2 years of experience in building modern, fast, and responsive web
-                    applications.
-                    Specialized in React and modern JavaScript, with a strong focus on clean code, performance, and
-                    user-centric design.
+                    <span data-i18n="about.copy">I build modern, fast, and responsive web interfaces with a focus on
+                        clean code, performance, and thoughtful user experience.</span>
                 </p>
                 <ul class="about-list">
-                    <li><i class="fas fa-code"></i> <span>Pixel-perfect implementation</span></li>
-                    <li><i class="fas fa-mobile-alt"></i> <span>100% Responsive Design</span></li>
-                    <li><i class="fas fa-bolt"></i> <span>Performance & Speed Optimization</span></li>
-                    <li><i class="fas fa-shield-alt"></i> <span>Secure & Scalable Code</span></li>
+                    <li><i class="fas fa-code"></i> <span data-i18n="about.point1">Pixel-perfect implementation</span>
+                    </li>
+                    <li><i class="fas fa-mobile-alt"></i> <span data-i18n="about.point2">Responsive design</span></li>
+                    <li><i class="fas fa-bolt"></i> <span data-i18n="about.point3">Performance-focused builds</span>
+                    </li>
+                    <li><i class="fas fa-shield-alt"></i> <span data-i18n="about.point4">Maintainable, scalable
+                            code</span></li>
                 </ul>
             </div>
 
@@ -180,8 +181,9 @@
     <section id="skills">
 
         <div class="section-header fade-in">
-            <h2 class="section-title">Skills</h2>
-            <p class="section-description">Tools and technologies I use to build exceptional digital experiences</p>
+            <h2 class="section-title" data-i18n="skills.title">Skills</h2>
+            <p class="section-description" data-i18n="skills.lead">Tools and technologies I use to build exceptional
+                digital experiences</p>
         </div>
 
         <div class="skills-grid">
@@ -295,9 +297,9 @@
     <section id="why-me">
 
         <div class="section-header fade-in">
-            <h2 class="section-title">?Why Choose Me</h2>
-            <p class="section-description">Not just a developer — a partner who understands your vision and translates
-                it into working code</p>
+            <h2 class="section-title" data-i18n="why.title">Why Choose Me?</h2>
+            <p class="section-description" data-i18n="why.lead">Not just a developer, but a partner who understands your
+                vision and translates it into working code</p>
         </div>
 
         <div class="why-container">
@@ -314,32 +316,33 @@
                 <div class="why-card">
                     <div class="why-icon"><i class="fas fa-bolt"></i></div>
                     <div class="why-card-content">
-                        <h4>تسليم في الوقت</h4>
-                        <p>ملتزم بالمواعيد، مش بس بالجودة.</p>
+                        <h4 data-i18n="why.card1.title">On-time delivery</h4>
+                        <p data-i18n="why.card1.text">I respect deadlines without compromising quality.</p>
                     </div>
                 </div>
 
                 <div class="why-card">
                     <div class="why-icon"><i class="fas fa-comments"></i></div>
                     <div class="why-card-content">
-                        <h4>تواصل مستمر</h4>
-                        <p>هتكون على علم بكل خطوة طول فترة المشروع.</p>
+                        <h4 data-i18n="why.card2.title">Clear communication</h4>
+                        <p data-i18n="why.card2.text">You stay informed at every stage of the project.</p>
                     </div>
                 </div>
 
                 <div class="why-card">
                     <div class="why-icon"><i class="fas fa-magic"></i></div>
                     <div class="why-card-content">
-                        <h4>اهتمام بالتفاصيل</h4>
-                        <p>الفرق بين موقع عادي وموقع استثنائي هو التفاصيل.</p>
+                        <h4 data-i18n="why.card3.title">Attention to detail</h4>
+                        <p data-i18n="why.card3.text">The difference between an ordinary and exceptional website is in
+                            the details.</p>
                     </div>
                 </div>
 
                 <div class="why-card">
                     <div class="why-icon"><i class="fas fa-sync-alt"></i></div>
                     <div class="why-card-content">
-                        <h4>مرونة في التعديلات</h4>
-                        <p>رأيك مهم، والتعديلات جزء طبيعي من الشغل.</p>
+                        <h4 data-i18n="why.card4.title">Flexible revisions</h4>
+                        <p data-i18n="why.card4.text">Your feedback matters, and revisions are part of the process.</p>
                     </div>
                 </div>
 
@@ -351,8 +354,9 @@
     <section id="projects">
 
         <div class="section-header fade-in">
-            <h2 class="section-title">Selected Projects</h2>
-            <p class="section-description">مجموعة من الأفكار التي قمت بتحويلها إلى تطبيقات ويب حية متكاملة</p>
+            <h2 class="section-title" data-i18n="projects.title">Selected Projects</h2>
+            <p class="section-description" data-i18n="projects.lead">A selection of ideas turned into practical web
+                applications.</p>
         </div>
 
         <div class="projects-grid" id="projectsGrid">
@@ -370,10 +374,10 @@
             <p class="modal-desc" id="modalDesc">Project description here...</p>
             <div class="modal-buttons">
                 <a href="#" class="btn btn-primary" id="modalLiveLink" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Preview
+                    <i class="fas fa-external-link-alt"></i> <span data-i18n="modal.preview">Preview</span>
                 </a>
                 <a href="#" class="btn btn-secondary" id="modalRepoLink" target="_blank">
-                    <i class="fab fa-github"></i> Source Code
+                    <i class="fab fa-github"></i> <span data-i18n="modal.source">Source Code</span>
                 </a>
             </div>
         </div>
@@ -383,9 +387,9 @@
     <section id="contact">
 
         <div class="section-header fade-in">
-            <h2 class="section-title">Contact Me</h2>
-            <p class="section-description">Do you have a project idea? Get in touch with me now to turn it into working
-                code</p>
+            <h2 class="section-title" data-i18n="contact.title">Contact Me</h2>
+            <p class="section-description" data-i18n="contact.lead">Have a project idea? Get in touch and let us turn it
+                into reality.</p>
         </div>
 
         <div class="contact-container">
@@ -401,9 +405,9 @@
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
                     <div class="contact-details">
-                        <h4>Phone Number</h4>
+                        <h4 data-i18n="contact.phone">Phone Number</h4>
                         <p>01103023916</p>
                     </div>
                 </div>
@@ -411,26 +415,31 @@
             </div>
 
             <div class="contact-form fade-in">
-                <div class="form-success-message" id="formSuccess">تم إرسال رسالتك بنجاح! شكراً لك.</div>
+                <div class="form-success-message" id="formSuccess" data-i18n="form.success">Message sent successfully.
+                    Thank you!</div>
 
                 <form id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="text" id="formName" name="name" placeholder="Full Name" required>
+                            <input type="text" id="formName" name="name" data-i18n-placeholder="form.name"
+                                placeholder="Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="formEmail" name="email" placeholder="Email Address" required>
+                            <input type="email" id="formEmail" name="email" data-i18n-placeholder="form.email"
+                                placeholder="Email Address" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="formSubject" name="subject" placeholder="Subject" required>
+                        <input type="text" id="formSubject" name="subject" data-i18n-placeholder="form.subject"
+                            placeholder="Subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="formMessage" name="message" placeholder="Your Message here" required></textarea>
+                        <textarea id="formMessage" name="message" data-i18n-placeholder="form.message"
+                            placeholder="Your message here" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
-                        Send WhatsApp
+                        <span data-i18n="form.send">Send via WhatsApp</span>
                     </button>
                 </form>
             </div>
@@ -451,10 +460,11 @@
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
-        <p class="footer-text">© 2026 Islam Misbah • Front-End Developer</p>
+        <p class="footer-text">© 2026 Islam Misbah • <span data-i18n="footer.role">Front-End Developer</span></p>
         <p class="footer-text" style="font-size:0.9rem; margin-top:0.5rem; opacity:0.8;">
 
-            Designed & Developed by <span>Islam Misbah</span>. &copy; All rights reserved
+            <span data-i18n="footer.credit">Designed & Developed by</span> <span>Islam Misbah</span>. <span
+                data-i18n="footer.rights">All rights reserved</span>
         </p>
     </footer>
 

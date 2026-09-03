@@ -1,3 +1,94 @@
+// ==================== LANGUAGE ====================
+const translations = {
+    ar: {
+        'nav.contact': 'تواصل', 'nav.projects': 'المشاريع', 'nav.why': 'لماذا أنا', 'nav.skills': 'المهارات', 'nav.about': 'عني', 'nav.home': 'الرئيسية',
+        'hero.role': 'مطور واجهات أمامية', 'hero.work': 'شاهد أعمالي', 'hero.cv': 'تحميل السيرة الذاتية',
+        'about.title': 'عني', 'about.lead': 'كود متجاوب لتصميمات جميلة', 'about.role': 'مطور واجهات أمامية',
+        'about.copy': 'أبني واجهات ويب عصرية وسريعة ومتجاوبة، مع تركيز على الكود النظيف والأداء وتجربة المستخدم المدروسة.',
+        'about.point1': 'تنفيذ دقيق للتصميم', 'about.point2': 'تصميم متجاوب', 'about.point3': 'اهتمام بالأداء', 'about.point4': 'كود قابل للصيانة والتوسع',
+        'skills.title': 'المهارات', 'skills.lead': 'الأدوات والتقنيات التي أستخدمها لبناء تجارب رقمية مميزة',
+        'why.title': 'لماذا تختارني؟', 'why.lead': 'لست مجرد مطور، بل شريك يفهم رؤيتك ويحوّلها إلى كود يعمل.',
+        'why.card1.title': 'التسليم في الموعد', 'why.card1.text': 'ملتزم بالمواعيد دون التنازل عن الجودة.', 'why.card2.title': 'تواصل واضح', 'why.card2.text': 'ستكون على علم بكل خطوة في المشروع.',
+        'why.card3.title': 'اهتمام بالتفاصيل', 'why.card3.text': 'الفرق بين الموقع العادي والاستثنائي يكمن في التفاصيل.', 'why.card4.title': 'مرونة في التعديلات', 'why.card4.text': 'رأيك مهم، والتعديلات جزء طبيعي من عملية العمل.',
+        'projects.title': 'مشاريع مختارة', 'projects.lead': 'مجموعة من الأفكار التي تحولت إلى تطبيقات ويب عملية.',
+        'contact.title': 'تواصل معي', 'contact.lead': 'لديك فكرة مشروع؟ تواصل معي لنحوّلها إلى واقع.', 'contact.phone': 'رقم الهاتف',
+        'form.name': 'الاسم بالكامل', 'form.email': 'البريد الإلكتروني', 'form.subject': 'الموضوع', 'form.message': 'اكتب رسالتك هنا', 'form.send': 'إرسال عبر واتساب',
+        'form.success': 'تم فتح واتساب برسالتك. أكمل الإرسال من هناك.', 'footer.role': 'مطور واجهات أمامية', 'footer.credit': 'تصميم وتطوير', 'footer.rights': 'جميع الحقوق محفوظة',
+        'modal.preview': 'معاينة', 'modal.source': 'الكود المصدري', 'project.view': 'عرض المشروع', 'project.repo': 'كود المشروع', 'language': 'EN'
+    },
+    en: {
+        'nav.contact': 'Contact', 'nav.projects': 'Portfolio', 'nav.why': 'Why Me', 'nav.skills': 'Skills', 'nav.about': 'About', 'nav.home': 'Home',
+        'hero.role': 'Front-End Developer', 'hero.work': 'View My Work', 'hero.cv': 'Download CV',
+        'about.title': 'About Me', 'about.lead': 'Responsive code for beautiful designs', 'about.role': 'Front-End Developer',
+        'about.copy': 'I build modern, fast, and responsive web interfaces with a focus on clean code, performance, and thoughtful user experience.',
+        'about.point1': 'Pixel-perfect implementation', 'about.point2': 'Responsive design', 'about.point3': 'Performance-focused builds', 'about.point4': 'Maintainable, scalable code',
+        'skills.title': 'Skills', 'skills.lead': 'Tools and technologies I use to build exceptional digital experiences',
+        'why.title': 'Why Choose Me?', 'why.lead': 'Not just a developer, but a partner who understands your vision and translates it into working code.',
+        'why.card1.title': 'On-time delivery', 'why.card1.text': 'I respect deadlines without compromising quality.', 'why.card2.title': 'Clear communication', 'why.card2.text': 'You stay informed at every stage of the project.',
+        'why.card3.title': 'Attention to detail', 'why.card3.text': 'The difference between an ordinary and exceptional website is in the details.', 'why.card4.title': 'Flexible revisions', 'why.card4.text': 'Your feedback matters, and revisions are part of the process.',
+        'projects.title': 'Selected Projects', 'projects.lead': 'A selection of ideas turned into practical web applications.',
+        'contact.title': 'Contact Me', 'contact.lead': 'Have a project idea? Get in touch and let us turn it into reality.', 'contact.phone': 'Phone Number',
+        'form.name': 'Full Name', 'form.email': 'Email Address', 'form.subject': 'Subject', 'form.message': 'Your message here', 'form.send': 'Send via WhatsApp',
+        'form.success': 'WhatsApp opened with your message. Complete the sending there.', 'footer.role': 'Front-End Developer', 'footer.credit': 'Designed & Developed by', 'footer.rights': 'All rights reserved',
+        'modal.preview': 'Preview', 'modal.source': 'Source Code', 'project.view': 'View project', 'project.repo': 'Project source code', 'language': 'عربي'
+    }
+};
+
+const languageStorageKey = 'portfolio-language-v2';
+let currentLanguage = localStorage.getItem(languageStorageKey) || 'en';
+
+function getProjectText(project, field) {
+    return project[`${field}${currentLanguage === 'en' ? 'En' : 'Ar'}`] || project[field] || '';
+}
+
+function applyLanguage(language) {
+    currentLanguage = language;
+    const isArabic = language === 'ar';
+    document.documentElement.lang = language;
+    document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        element.textContent = translations[language][element.dataset.i18n];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        element.placeholder = translations[language][element.dataset.i18nPlaceholder];
+    });
+    const languageToggle = document.getElementById('languageToggle');
+    if (languageToggle) {
+        languageToggle.textContent = translations[language].language;
+        languageToggle.setAttribute('aria-label', isArabic ? 'Switch to English' : 'التبديل إلى العربية');
+    }
+    localStorage.setItem(languageStorageKey, language);
+    document.title = isArabic ? 'إسلام مصباح | مطور واجهات أمامية' : 'Islam Misbah | Front-End Developer';
+    if (targetElement) {
+        targetElement.textContent = '';
+        charIndex = 0;
+        typeData = isArabic ? heroTexts.ar : heroTexts.en;
+        typeStarted = false;
+        startTyping();
+    }
+    if (whyEl) {
+        whyTextIndex = 0;
+        whyCharIndex = 0;
+        whyDeleting = false;
+        whyEl.textContent = '';
+    }
+    if (projects.length && projectsGrid) {
+        projectsGrid.innerHTML = '';
+        projects.forEach(project => {
+            const card = buildProjectCard(project);
+            projectsGrid.appendChild(card);
+            observer.observe(card);
+        });
+    }
+}
+
+const heroTexts = {
+    ar: 'أحوّل الأفكار المعقدة إلى تجارب رقمية سلسة وجذابة باستخدام تقنيات الويب الحديثة.',
+    en: 'I turn complex ideas into smooth, engaging digital experiences using modern web technologies.'
+};
+let typeData = heroTexts.ar;
+let projects = [];
+
 // ==================== PRELOADER ====================
 window.addEventListener('load', () => {
     document.querySelector('.preloader').classList.add('fade-out');
@@ -9,15 +100,14 @@ const isMobile = () => window.innerWidth <= 1024;
 
 
 // ==================== HERO TYPING EFFECT ====================
-const textData = "أحول الأفكار المعقدة إلى تجارب مستخدم رقمية سلسة وجذابة باستخدام أحدث تقنيات الويب الحديثة. شغوف ببناء واجهات تفاعلية تترك انطباعاً لا يُنسى.";
 let charIndex = 0;
 const targetElement = document.getElementById("heroDescription");
 const descContainer = document.getElementById("heroDescContainer");
 let typeStarted = false;
 
 function typeEffect() {
-    if (charIndex < textData.length) {
-        targetElement.textContent += textData.charAt(charIndex);
+    if (charIndex < typeData.length) {
+        targetElement.textContent += typeData.charAt(charIndex);
         charIndex++;
         setTimeout(typeEffect, 35);
     }
@@ -118,6 +208,13 @@ navLinks.forEach(link => {
 const themeToggle = document.getElementById('themeToggle');
 const icon = themeToggle.querySelector('i');
 
+const languageToggle = document.getElementById('languageToggle');
+if (languageToggle) {
+    languageToggle.addEventListener('click', () => {
+        applyLanguage(currentLanguage === 'ar' ? 'en' : 'ar');
+    });
+}
+
 themeToggle.addEventListener('click', () => {
     if (document.body.getAttribute('data-theme') === 'dark') {
         document.body.removeAttribute('data-theme');
@@ -187,15 +284,15 @@ function buildProjectCard(project) {
 
     card.innerHTML = `
         <div class="project-image">
-            <img src="${project.image}" alt="${project.title}">
+            <img src="${project.image}" alt="${getProjectText(project, 'title')}">
         </div>
         <div class="project-info">
             <div class="project-tags">${previewTags}</div>
-            <h3>${project.title}</h3>
-            <p>${project.shortDesc}</p>
+            <h3>${getProjectText(project, 'title')}</h3>
+            <p>${getProjectText(project, 'shortDesc')}</p>
             <div class="project-links">
-                <button class="open-project-btn" aria-label="عرض المشروع"><i class="fas fa-eye"></i></button>
-                <a href="${project.repoLink || '#'}" target="_blank" aria-label="كود المشروع"><i class="fab fa-github"></i></a>
+                <button class="open-project-btn" aria-label="${translations[currentLanguage]['project.view']}"><i class="fas fa-eye"></i></button>
+                <a href="${project.repoLink || '#'}" target="_blank" aria-label="${translations[currentLanguage]['project.repo']}"><i class="fab fa-github"></i></a>
             </div>
         </div>
     `;
@@ -238,8 +335,8 @@ function unlockPageScroll() {
 }
 
 function openProjectModal(project) {
-    document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalDesc').textContent = project.fullDesc || project.shortDesc;
+    document.getElementById('modalTitle').textContent = getProjectText(project, 'title');
+    document.getElementById('modalDesc').textContent = getProjectText(project, 'fullDesc') || getProjectText(project, 'shortDesc');
     document.getElementById('modalImg').src = project.image;
 
     const tagsContainer = document.getElementById('modalTags');
@@ -265,7 +362,8 @@ function closeProjectModal() {
 if (projectsGrid) {
     fetch('projects.json')
         .then(res => res.json())
-        .then(projects => {
+        .then(loadedProjects => {
+            projects = loadedProjects;
             projects.forEach(project => {
                 const card = buildProjectCard(project);
                 projectsGrid.appendChild(card);
@@ -290,6 +388,14 @@ const whyTexts = [
     "أسلّم في الموعد، وأتواصل طول الوقت.",
     "أهتم بتجربة المستخدم بقدر ما أهتم بالكود.",
     "مشروعك بالنسبالي مش مجرد task — ده بناء حاجة تفرق."
+];
+
+const whyTextsEn = [
+    'I write maintainable code, not just code that works.',
+    'I understand design and translate it with precision.',
+    'I communicate clearly and respect agreed deadlines.',
+    'I care about the user experience as much as the code.',
+    'Your project deserves thoughtful attention at every step.'
 ];
 
 let whyTextIndex = 0;
@@ -318,7 +424,7 @@ function lockWhyBoxHeight() {
     document.body.appendChild(clone);
 
     let maxHeight = 0;
-    whyTexts.forEach(text => {
+    [...whyTexts, ...whyTextsEn].forEach(text => {
         clone.textContent = text;
         maxHeight = Math.max(maxHeight, clone.scrollHeight);
     });
@@ -348,7 +454,7 @@ window.addEventListener('resize', () => {
 let whyTimeoutId = null;
 
 function whyType() {
-    const current = whyTexts[whyTextIndex];
+    const current = (currentLanguage === 'ar' ? whyTexts : whyTextsEn)[whyTextIndex];
 
     if (!whyDeleting) {
         // Typing forward
@@ -399,6 +505,8 @@ if (whySection) {
     whyObserver.observe(whySection);
 }
 
+applyLanguage(currentLanguage);
+
 
 // ==================== CONTACT FORM -> WHATSAPP ====================
 const contactForm = document.getElementById('contactForm');
@@ -426,7 +534,7 @@ if (contactForm) {
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
 
         const successMsg = document.getElementById('formSuccess');
-        successMsg.textContent = 'تم فتح واتساب برسالتك — أكمل الإرسال من هناك.';
+        successMsg.textContent = translations[currentLanguage]['form.success'];
         successMsg.classList.add('show');
         contactForm.reset();
 
