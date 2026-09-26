@@ -777,11 +777,14 @@ section {
         transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
         box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .project-image {
     height: 220px;
     overflow: hidden;
     position: relative;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-image img {
@@ -790,7 +793,6 @@ section {
     object-fit: cover;
     transition: var(--transition-smooth);
 }
-
 .project-info {
     padding: 2rem;
 }

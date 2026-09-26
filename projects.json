@@ -3,26 +3,51 @@
     "id": 1,
     "titleAr": "موقع Mocana Café",
     "titleEn": "Mocana Café Website",
-    "shortDescAr": "صفحة هبوط عصرية ومتجاوبة لمقهى فاخر، تعرض القائمة وقصة المكان وآراء العملاء وتتيح حجز طاولة.",
-    "shortDescEn": "A modern responsive landing page for a premium cafe, featuring the menu, story, guest reviews, and table reservations.",
-    "fullDescAr": "صممت وطورت تجربة رقمية كاملة لمقهى Mocana Café باستخدام HTML وCSS وJavaScript. يتضمن الموقع واجهة داكنة أنيقة، أقسامًا للقائمة وقصة المكان وآراء العملاء، نموذجًا لحجز الطاولات، وتفاعلات متجاوبة تعمل على مختلف الشاشات.",
-    "fullDescEn": "Designed and developed a complete digital experience for Mocana Café using HTML, CSS, and JavaScript. The site includes an elegant dark interface, menu, story and guest review sections, a table reservation form, and responsive interactions across screen sizes.",
-    "image": "photo/mocana-cafe.jpg.png",
+    "shortDescAr": "صفحة هبوط أنيقة لمقهى روفتوب متخصص في القهوة المميزة، تعرض القائمة وقصة المكان وآراء العملاء وتتيح حجز طاولة.",
+    "shortDescEn": "A modern rooftop café landing page featuring specialty coffee, an elegant menu, guest reviews, and a table reservation system.",
+    "fullDescAr": "صممت وطورت موقع Mocana Café، مقهى روفتوب عصري يجمع بين القهوة المميزة والمأكولات المبتكرة وإطلالة بانورامية على المدينة. يتضمن الموقع قسم قائمة تفاعلي (قهوة، طعام، حلويات)، قصة المكان، آراء العملاء، ونظام حجز طاولات كامل مع اختيار التاريخ والوقت وعدد الضيوف، بتصميم داكن متجاوب.",
+    "fullDescEn": "Designed and developed the Mocana Café website, a contemporary rooftop café combining specialty coffee, innovative cuisine, and panoramic city views. The site includes an interactive menu section (coffee, food, desserts), a story section, guest testimonials, and a full table reservation system with date/time/guest selection, in a responsive dark-themed design.",
+    "image": "photo/mocana-cafe.png",
     "tags": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
     "liveLink": "https://mocana-cafe.vercel.app/",
-    "repoLink": "https://github.com/eslammisbah538-eng/Mocana-Caf-"
+    "repoLink": "https://github.com/eslammisbah538-eng/Mocana-Caf-.git"
   },
   {
     "id": 2,
+    "titleAr": "تطبيق Deep Focus",
+    "titleEn": "Deep Focus App",
+    "shortDescAr": "تطبيق متكامل للمذاكرة وتنظيم الوقت يضم بومودورو تايمر، شات بوت ذكاء اصطناعي، فلاش كاردز، أصوات محيطية، وتقرير أداء.",
+    "shortDescEn": "An all-in-one study and time-management app with a Pomodoro timer, AI chatbot, flashcards, ambient sounds, and performance tracking.",
+    "fullDescAr": "صممت وطورت Deep Focus، منصة ذكية للمذاكرة وتنظيم الوقت باستخدام Vanilla JS وواجهة عصرية متجاوبة. يضم التطبيق بومودورو تايمر قابل للتخصيص، فلاش كاردز يدوية وأخرى مولّدة بالذكاء الاصطناعي من الملاحظات، شات بوت AI للإجابة عن الأسئلة الدراسية، مكتبة أصوات محيطية للتركيز، بلانر للمواد وتواريخ الامتحانات، وتقرير أداء أسبوعي، مع دعم للوضع الداكن والفاتح.",
+    "fullDescEn": "Designed and developed Deep Focus, a smart study and time-management platform built with Vanilla JS and a modern responsive UI. The app includes a customizable Pomodoro timer, manual and AI-generated flashcards from notes, an AI chatbot for study questions, an ambient sound mixer for focus, a subject/exam planner, and a weekly performance report, with light/dark theme support.",
+    "image": "photo/deep-focus.png",
+    "tags": ["HTML5", "CSS3", "JavaScript", "AI Integration", "Responsive Design"],
+    "liveLink": "https://deepfocus-zone.vercel.app/",
+    "repoLink": "https://github.com/eslammisbah538-eng/deep-focus.git"
+  },
+  {
+    "id": 3,
     "titleAr": "موقع صيدلية الشعب",
     "titleEn": "Al Shaab Pharmacy",
     "shortDescAr": "واجهة صيدلية متجاوبة لعرض المنتجات والخدمات، مع فلترة المنتجات وسلة مشتريات وطلب مباشر عبر واتساب.",
     "shortDescEn": "A responsive pharmacy experience with product browsing, filtering, a shopping cart, and direct WhatsApp ordering.",
-    "fullDescAr": "صممت وطورت Landing Page متكاملة لصيدلية الشعب باستخدام HTML5 وCSS3 وVanilla JavaScript. يحتوي الموقع على وضع ليلي ونهاري، فلترة للمنتجات، سلة مشتريات تفاعلية، وتجهيز الطلبات وإرسالها مباشرة عبر WhatsApp، مع تصميم متجاوب لمختلف الشاشات.",
-    "fullDescEn": "Designed and developed a complete landing page for Al Shaab Pharmacy using HTML5, CSS3, and Vanilla JavaScript. The experience includes dark and light themes, product filtering, an interactive shopping cart, direct WhatsApp order preparation, and responsive layouts across screen sizes.",
+    "fullDescAr": "صممت وطورت موقع صيدلية الشعب باستخدام HTML5 وCSS3 وVanilla JavaScript. يعرض الموقع خدمات الصيدلية (توصيل سريع، استشارة صيدلانية، دعم على مدار الساعة)، منتجات مصنفة (فيتامينات، أدوية، مستحضرات) مع فلترة وسلة مشتريات تفاعلية، آراء العملاء، ونموذج تواصل، مع إتمام الطلب مباشرة عبر واتساب وتصميم متجاوب لكل الشاشات.",
+    "fullDescEn": "Designed and developed the Al Shaab Pharmacy website using HTML5, CSS3, and Vanilla JavaScript. The site showcases pharmacy services (fast delivery, free pharmacist consultation, 24/7 support), categorized products (vitamins, medicine, cosmetics) with filtering and an interactive shopping cart, customer reviews, and a contact form, with order checkout via WhatsApp and a fully responsive layout.",
     "image": "photo/pharmacy.png",
     "tags": ["HTML5", "CSS3", "Vanilla JavaScript", "Responsive Design"],
     "liveLink": "https://pharmacy-islam.vercel.app/",
-    "repoLink": "https://github.com/eslammisbah538-eng/pharmacy"
+    "repoLink": "https://github.com/eslammisbah538-eng/pharmacy.git"
+  },
+  {
+    "id": 4,
+    "titleAr": "منصة SciCode",
+    "titleEn": "SciCode Platform",
+    "shortDescAr": "منصة تعليمية تجمع كل محتوى دراسة كلية العلوم في مكان واحد: محاضرات، ملخصات وامتحانات سابقة لكل الأقسام.",
+    "shortDescEn": "An educational platform that brings together all Faculty of Science study content in one place: lectures, summaries, and past exams for every department.",
+    "fullDescAr": "صممت وطورت منصة SciCode التعليمية، بنية هرمية تنظم المحتوى الجامعي (جامعات، كليات، أقسام، سنوات، ترمين، مواد، وتصنيفات محاضرات/ملخصات/امتحانات). الواجهة الأمامية React وVite وTailwind مع نظام تسجيل دخول وحماية كامل للطلاب، والباك إند Node.js وExpress مع قاعدة بيانات Postgres عبر Supabase وتخزين ملفات عبر Cloudinary، ولوحة تحكم للإدارة لإدارة المواد والملفات والطلبات المعلقة.",
+    "fullDescEn": "Designed and developed SciCode, an educational platform with a hierarchical structure organizing university content (universities, colleges, departments, years, semesters, subjects, and lecture/summary/exam categories). The frontend uses React, Vite, and Tailwind with a full student authentication and route-protection system, while the backend runs on Node.js and Express with a Postgres database via Supabase and Cloudinary file storage, plus an admin dashboard for managing subjects, files, and pending uploads.",
+    "image": "photo/scicode.png",
+    "tags": ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Supabase"],
+    "liveLink": "https://scicode-platform.vercel.app/"
   }
 ]
